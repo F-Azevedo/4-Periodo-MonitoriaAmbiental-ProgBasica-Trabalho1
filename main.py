@@ -38,6 +38,44 @@ def cria_tabuleiro(t, w, h):
     t.penup()
 
 
+def fim_de_jogo(tabuleiro, controle_tabuleiro):
+    # Verifica se tem um ganhador pelas linhas
+    if tabuleiro[0][0] == tabuleiro[0][1] == tabuleiro[0][2]:
+        return tabuleiro[0][0]
+    elif tabuleiro[1][0] == tabuleiro[1][1] == tabuleiro[1][2]:
+        return tabuleiro[1][0]
+    elif tabuleiro[2][0] == tabuleiro[2][1] == tabuleiro[2][2]:
+        return tabuleiro[2][0]
+    # Verifica se tem um ganhador pelas colunas
+    elif tabuleiro[0][0] == tabuleiro[1][0] == tabuleiro[2][0]:
+        return tabuleiro[0][0]
+    elif tabuleiro[0][1] == tabuleiro[1][1] == tabuleiro[2][1]:
+        return tabuleiro[0][1]
+    elif tabuleiro[0][2] == tabuleiro[1][2] == tabuleiro[2][2]:
+        return tabuleiro[0][2]
+    # Verifica se tem um ganhador na diagonal principal
+    elif tabuleiro[0][0] == tabuleiro[1][1] == tabuleiro[2][2]:
+        return tabuleiro[0][0]
+    # Verifica se tem um ganhador na diagonal secundária
+    elif tabuleiro[0][2] == tabuleiro[1][1] == tabuleiro[2][0]:
+        return tabuleiro[0][2]
+    # Se não retornou ainda, significa que ninguem ganhou.
+    # Verifica se já deu velha.
+    elif controle_tabuleiro.size() == 0:
+        return -1
+
+    # Se ninguem ganhou e ainda tem espaços, continua o jogo
+    return 0
+
+
+def inicia_jogo(t, tabuleiro, controle_tabuleiro, w, h):
+    jogador1 = True
+    jogador2 = False
+    ganhador = fim_de_jogo(tabuleiro, controle_tabuleiro)
+    while 0 != ganhador:
+        print()
+
+
 # Inicialização da Tartaruga
 tartaruga = turtle.Turtle()
 tartaruga.shape('turtle')
