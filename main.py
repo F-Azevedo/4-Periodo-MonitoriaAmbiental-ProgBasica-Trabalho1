@@ -39,6 +39,48 @@ def cria_tabuleiro(t, w, h):
     t.penup()
 
 
+def desenha_x(t, w, h, pos):
+    if pos == 0:
+        print()
+    elif pos == 1:
+        print()
+    elif pos == 2:
+        print()
+    elif pos == 3:
+        print()
+    elif pos == 4:
+        print()
+    elif pos == 5:
+        print()
+    elif pos == 6:
+        print()
+    elif pos == 7:
+        print()
+    elif pos == 8:
+        print()
+
+
+def desenha_o(t, w, h, pos):
+    if pos == 0:
+        print()
+    elif pos == 1:
+        print()
+    elif pos == 2:
+        print()
+    elif pos == 3:
+        print()
+    elif pos == 4:
+        print()
+    elif pos == 5:
+        print()
+    elif pos == 6:
+        print()
+    elif pos == 7:
+        print()
+    elif pos == 8:
+        print()
+
+
 def fim_de_jogo(tabuleiro, controle_tabuleiro):
     # Verifica se tem um ganhador pelas linhas
     if tabuleiro[0][0] == tabuleiro[0][1] == tabuleiro[0][2] and (tabuleiro[0][0] == ('X' or 'O')):
@@ -81,11 +123,11 @@ def inicia_jogo(t, tabuleiro, controle_tabuleiro, w, h):
             print(f"Número selecionado {pos}, num//3 = {pos//3}, num%3 = {pos%3}\n", flush=True)
             if jogador1:
                 tabuleiro[x][y] = 'X'
-                # Função de desenhar a jogada aqui
+                desenha_x(t, w, h, pos)
                 jogador1 = False
             else:
                 tabuleiro[x][y] = 'O'
-                # Função de desenhar a jogada aqui
+                desenha_o(t, w, h, pos)
                 jogador1 = True
         ganhador = fim_de_jogo(tabuleiro, controle_tabuleiro)
     print(f"Tabuleiro: {tabuleiro}")
