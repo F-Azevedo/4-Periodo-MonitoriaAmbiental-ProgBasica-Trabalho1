@@ -41,66 +41,102 @@ def cria_tabuleiro(t, w, h):
 
 def desenha_x(t, w, h, pos):
     if pos == 0:
-        print()
+        t.penup()
+        t.setposition(-150, 150)
     elif pos == 1:
-        print()
+        t.penup()
+        t.setposition(0, 150)
     elif pos == 2:
-        print()
+        t.penup()
+        t.setposition(150, 150)
     elif pos == 3:
-        print()
+        t.penup()
+        t.setposition(-150, 0)
     elif pos == 4:
-        print()
+        t.penup()
+        t.setposition(0, 0)
     elif pos == 5:
-        print()
+        t.penup()
+        t.setposition(150, 0)
     elif pos == 6:
-        print()
+        t.penup()
+        t.setposition(-150, -150)
     elif pos == 7:
-        print()
+        t.penup()
+        t.setposition(0, -150)
     elif pos == 8:
-        print()
+        t.penup()
+        t.setposition(150, -150)
 
 
 def desenha_o(t, w, h, pos):
     if pos == 0:
-        print()
+        t.setposition(-200, 150)
+        t.pendown()
+        t.circle(50)
+        t.penup()
     elif pos == 1:
-        print()
+        t.setposition(-50, 150)
+        t.pendown()
+        t.circle(50)
+        t.penup()
     elif pos == 2:
-        print()
+        t.setposition(100, 150)
+        t.pendown()
+        t.circle(50)
+        t.penup()
     elif pos == 3:
-        print()
+        t.setposition(-200, 0)
+        t.pendown()
+        t.circle(50)
+        t.penup()
     elif pos == 4:
-        print()
+        t.setposition(-50, 0)
+        t.pendown()
+        t.circle(50)
+        t.penup()
     elif pos == 5:
-        print()
+        t.setposition(100, 0)
+        t.pendown()
+        t.circle(50)
+        t.penup()
     elif pos == 6:
-        print()
+        t.setposition(-200, -150)
+        t.pendown()
+        t.circle(50)
+        t.penup()
     elif pos == 7:
-        print()
+        t.setposition(-50, -150)
+        t.pendown()
+        t.circle(50)
+        t.penup()
     elif pos == 8:
-        print()
+        t.setposition(100, -150)
+        t.pendown()
+        t.circle(50)
+        t.penup()
 
 
 def fim_de_jogo(tabuleiro, controle_tabuleiro):
     # Verifica se tem um ganhador pelas linhas
-    if tabuleiro[0][0] == tabuleiro[0][1] == tabuleiro[0][2] and (tabuleiro[0][0] == ('X' or 'O')):
+    if tabuleiro[0][0] == tabuleiro[0][1] == tabuleiro[0][2] and (tabuleiro[0][0] == 'X' or tabuleiro[0][0] == 'O'):
         return tabuleiro[0][0]
-    elif tabuleiro[1][0] == tabuleiro[1][1] == tabuleiro[1][2] and (tabuleiro[1][0] == ('X' or 'O')):
+    elif tabuleiro[1][0] == tabuleiro[1][1] == tabuleiro[1][2] and (tabuleiro[1][0] == 'X' or tabuleiro[1][0] == 'O'):
         return tabuleiro[1][0]
-    elif tabuleiro[2][0] == tabuleiro[2][1] == tabuleiro[2][2] and (tabuleiro[2][0] == ('X' or 'O')):
+    elif tabuleiro[2][0] == tabuleiro[2][1] == tabuleiro[2][2] and (tabuleiro[2][0] == 'X' or tabuleiro[2][0] == 'O'):
         return tabuleiro[2][0]
     # Verifica se tem um ganhador pelas colunas
-    elif tabuleiro[0][0] == tabuleiro[1][0] == tabuleiro[2][0] and (tabuleiro[0][0] == ('X' or 'O')):
+    elif tabuleiro[0][0] == tabuleiro[1][0] == tabuleiro[2][0] and (tabuleiro[0][0] == 'X' or tabuleiro[0][0] == 'O'):
         return tabuleiro[0][0]
-    elif tabuleiro[0][1] == tabuleiro[1][1] == tabuleiro[2][1] and (tabuleiro[0][1] == ('X' or 'O')):
+    elif tabuleiro[0][1] == tabuleiro[1][1] == tabuleiro[2][1] and (tabuleiro[0][1] == 'X' or tabuleiro[0][1] == 'O'):
         return tabuleiro[0][1]
-    elif tabuleiro[0][2] == tabuleiro[1][2] == tabuleiro[2][2] and (tabuleiro[0][2] == ('X' or 'O')):
+    elif tabuleiro[0][2] == tabuleiro[1][2] == tabuleiro[2][2] and (tabuleiro[0][2] == 'X' or tabuleiro[0][2] == 'O'):
         return tabuleiro[0][2]
     # Verifica se tem um ganhador na diagonal principal
-    elif tabuleiro[0][0] == tabuleiro[1][1] == tabuleiro[2][2] and (tabuleiro[0][0] == ('X' or 'O')):
+    elif tabuleiro[0][0] == tabuleiro[1][1] == tabuleiro[2][2] and (tabuleiro[0][0] == 'X' or tabuleiro[0][0] == 'O'):
         return tabuleiro[0][0]
     # Verifica se tem um ganhador na diagonal secundária
-    elif tabuleiro[0][2] == tabuleiro[1][1] == tabuleiro[2][0] and (tabuleiro[0][2] == ('X' or 'O')):
+    elif tabuleiro[0][2] == tabuleiro[1][1] == tabuleiro[2][0] and (tabuleiro[0][2] == 'X' or tabuleiro[0][2] == 'O'):
         return tabuleiro[0][2]
     # Se não retornou ainda, significa que ninguem ganhou.
     # Verifica se já deu velha.
@@ -168,6 +204,7 @@ for i in range(3):
 print(tabuleiro)
 print(controle_tabuleiro)
 
+tartaruga.speed('slowest')
 inicia_jogo(tartaruga, tabuleiro, controle_tabuleiro, w, h)
 
 print("Clique na janela para terminar ...")
