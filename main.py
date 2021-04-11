@@ -38,22 +38,38 @@ def cria_tabuleiro(t, w, h):
     t.penup()
 
 
+# Inicialização da Tartaruga
 tartaruga = turtle.Turtle()
 tartaruga.shape('turtle')
-tartaruga.speed('slowest')
+tartaruga.speed('fast')
 print(f"Estou na posição {tartaruga.pos()}")
 print(f"Em relação à horizontal o meu ângulo é {tartaruga.heading()} graus.")
 
+# Definição do tamanho da tela
 turtle.screensize(450, 450)
 w, h = turtle.screensize()
 print(f"largura = {w} altura = {h}")
 
+# Estilização da tela
 window = turtle.Screen()
 tartaruga.pensize(5)
 window.bgcolor('light cyan')
-
 window.setup(1.2*w, 1.2*h)
+
+# Cria o tabuleiro do jogo
 cria_tabuleiro(tartaruga, w, h)
+
+# Inicia variáveis para controle do tabuleiro
+tabuleiro = list()
+controle_tabuleiro = [i for i in range(1, 10)]
+for i in range(3):
+    x = list()
+    for j in range(3):
+        x.append(False)
+    tabuleiro.append(x)
+
+print(tabuleiro)
+print(controle_tabuleiro)
 
 print("Clique na janela para terminar ...")
 window.exitonclick()
