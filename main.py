@@ -1,4 +1,5 @@
 import turtle
+from random import randint
 
 
 def cria_tabuleiro(t, w, h):
@@ -40,28 +41,28 @@ def cria_tabuleiro(t, w, h):
 
 def fim_de_jogo(tabuleiro, controle_tabuleiro):
     # Verifica se tem um ganhador pelas linhas
-    if tabuleiro[0][0] == tabuleiro[0][1] == tabuleiro[0][2]:
+    if tabuleiro[0][0] == tabuleiro[0][1] == tabuleiro[0][2] and (tabuleiro[0][0] == ('X' or 'O')):
         return tabuleiro[0][0]
-    elif tabuleiro[1][0] == tabuleiro[1][1] == tabuleiro[1][2]:
+    elif tabuleiro[1][0] == tabuleiro[1][1] == tabuleiro[1][2] and (tabuleiro[1][0] == ('X' or 'O')):
         return tabuleiro[1][0]
-    elif tabuleiro[2][0] == tabuleiro[2][1] == tabuleiro[2][2]:
+    elif tabuleiro[2][0] == tabuleiro[2][1] == tabuleiro[2][2] and (tabuleiro[2][0] == ('X' or 'O')):
         return tabuleiro[2][0]
     # Verifica se tem um ganhador pelas colunas
-    elif tabuleiro[0][0] == tabuleiro[1][0] == tabuleiro[2][0]:
+    elif tabuleiro[0][0] == tabuleiro[1][0] == tabuleiro[2][0] and (tabuleiro[0][0] == ('X' or 'O')):
         return tabuleiro[0][0]
-    elif tabuleiro[0][1] == tabuleiro[1][1] == tabuleiro[2][1]:
+    elif tabuleiro[0][1] == tabuleiro[1][1] == tabuleiro[2][1] and (tabuleiro[0][1] == ('X' or 'O')):
         return tabuleiro[0][1]
-    elif tabuleiro[0][2] == tabuleiro[1][2] == tabuleiro[2][2]:
+    elif tabuleiro[0][2] == tabuleiro[1][2] == tabuleiro[2][2] and (tabuleiro[0][2] == ('X' or 'O')):
         return tabuleiro[0][2]
     # Verifica se tem um ganhador na diagonal principal
-    elif tabuleiro[0][0] == tabuleiro[1][1] == tabuleiro[2][2]:
+    elif tabuleiro[0][0] == tabuleiro[1][1] == tabuleiro[2][2] and (tabuleiro[0][0] == ('X' or 'O')):
         return tabuleiro[0][0]
     # Verifica se tem um ganhador na diagonal secundária
-    elif tabuleiro[0][2] == tabuleiro[1][1] == tabuleiro[2][0]:
+    elif tabuleiro[0][2] == tabuleiro[1][1] == tabuleiro[2][0] and (tabuleiro[0][2] == ('X' or 'O')):
         return tabuleiro[0][2]
     # Se não retornou ainda, significa que ninguem ganhou.
     # Verifica se já deu velha.
-    elif controle_tabuleiro.size() == 0:
+    elif len(controle_tabuleiro) == 0:
         return -1
 
     # Se ninguem ganhou e ainda tem espaços, continua o jogo
@@ -70,10 +71,26 @@ def fim_de_jogo(tabuleiro, controle_tabuleiro):
 
 def inicia_jogo(t, tabuleiro, controle_tabuleiro, w, h):
     jogador1 = True
-    jogador2 = False
     ganhador = fim_de_jogo(tabuleiro, controle_tabuleiro)
-    while 0 != ganhador:
-        print()
+    while 0 == ganhador:
+        pos = randint(0, 8)
+        if pos in controle_tabuleiro:
+            controle_tabuleiro.remove(pos)
+            x = pos // 3
+            y = pos % 3
+            print(f"Número selecionado {pos}, num//3 = {pos//3}, num%3 = {pos%3}\n", flush=True)
+            if jogador1:
+                tabuleiro[x][y] = 'X'
+                # Função de desenhar a jogada aqui
+                jogador1 = False
+            else:
+                tabuleiro[x][y] = 'O'
+                # Função de desenhar a jogada aqui
+                jogador1 = True
+        ganhador = fim_de_jogo(tabuleiro, controle_tabuleiro)
+    print(f"Tabuleiro: {tabuleiro}")
+    print(f"Controle: {controle_tabuleiro}")
+    print(f"Ganhador: {ganhador}")
 
 
 # Inicialização da Tartaruga
@@ -99,7 +116,7 @@ cria_tabuleiro(tartaruga, w, h)
 
 # Inicia variáveis para controle do tabuleiro
 tabuleiro = list()
-controle_tabuleiro = [i for i in range(1, 10)]
+controle_tabuleiro = [i for i in range(0, 9)]
 for i in range(3):
     x = list()
     for j in range(3):
@@ -108,6 +125,8 @@ for i in range(3):
 
 print(tabuleiro)
 print(controle_tabuleiro)
+
+inicia_jogo(tartaruga, tabuleiro, controle_tabuleiro, w, h)
 
 print("Clique na janela para terminar ...")
 window.exitonclick()
