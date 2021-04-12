@@ -260,7 +260,6 @@ def inicia_jogo(t, tab):
         y = pos % 3
         if tab[x][y] != 'X' and tab[x][y] != 'O':
             cont += 1
-            print(f"Número selecionado {pos}, num//3 = {pos//3}, num%3 = {pos%3}\n", flush=True)
             if jogador1:
                 tab[x][y] = 'X'
                 desenha_x(t, pos)
@@ -270,21 +269,16 @@ def inicia_jogo(t, tab):
                 desenha_o(t, pos)
                 jogador1 = True
         ganhador = fim_de_jogo(t, tab, cont)
-    print(f"Tabuleiro: {tab}")
-    print(f"Ganhador: {ganhador}")
 
 
 # Inicialização da Tartaruga
 tartaruga = turtle.Turtle()
 tartaruga.shape('turtle')
 tartaruga.speed('fast')
-print(f"Estou na posição {tartaruga.pos()}")
-print(f"Em relação à horizontal o meu ângulo é {tartaruga.heading()} graus.")
 
 # Definição do tamanho da tela
 turtle.screensize(450, 450)
 largura, altura = turtle.screensize()
-print(f"largura = {largura} altura = {altura}")
 
 # Estilização da tela
 window = turtle.Screen()
@@ -303,9 +297,6 @@ for i in range(3):
         aux.append(False)
     tabuleiro.append(aux)
 
-print(tabuleiro)
-
-tartaruga.speed('fast')
 inicia_jogo(tartaruga, tabuleiro)
 
 print("Clique na janela para terminar ...")
